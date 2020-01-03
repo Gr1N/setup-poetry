@@ -2,9 +2,13 @@ name: Setup Python
 description: Set up your GitHub Actions workflow with a specific version of Poetry
 author: Nikita Grishko
 inputs:
-  myInput: # change this
+  test:
     description: "input description here"
+    required: false
     default: "default value if applicable"
 runs:
   using: node12
   main: dist/index.js
+branding:
+  icon: package
+  color: purple
