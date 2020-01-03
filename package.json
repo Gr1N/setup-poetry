@@ -1,13 +1,12 @@
 {
-  "name": "typescript-action",
+  "name": "setup-python",
   "version": "0.0.0",
   "private": true,
-  "description": "TypeScript template action",
+  "description": "Set up your GitHub Actions workflow with a specific version of Poetry",
   "main": "lib/main.js",
   "scripts": {
     "build": "tsc",
-    "format": "prettier --write **/*.ts",
-    "format-check": "prettier --check **/*.ts",
+    "format": "prettier --debug-check **/*.ts",
     "lint": "eslint src/**/*.ts",
     "pack": "ncc build",
     "test": "jest",
@@ -15,14 +14,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/actions/typescript-action.git"
+    "url": "git+https://github.com/Gr1N/setup-poetry.git"
   },
   "keywords": [
     "actions",
     "node",
     "setup"
   ],
-  "author": "YourNameOrOrganization",
+  "author": "Nikita Grishko",
   "license": "MIT",
   "dependencies": {
     "@actions/core": "^1.2.0"

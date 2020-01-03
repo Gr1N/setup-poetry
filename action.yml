@@ -1,10 +1,10 @@
-name: 'Your name here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: Setup Python
+description: Set up your GitHub Actions workflow with a specific version of Poetry
+author: Nikita Grishko
 inputs:
-  myInput:              # change this
-    description: 'input description here'
-    default: 'default value if applicable'
+  myInput: # change this
+    description: "input description here"
+    default: "default value if applicable"
 runs:
-  using: 'node12'
-  main: 'dist/index.js'
+  using: node12
+  main: dist/index.js
