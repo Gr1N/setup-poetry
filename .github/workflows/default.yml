@@ -19,7 +19,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
       - run: npm install
-        if: steps.npm-cache.outputs.cache-hit != 'true'
       - run: npm run lint
       - run: npm run test
 
