@@ -6,16 +6,25 @@ on:
       - master
 
 jobs:
-  # run linters, formatters and unit tests
-  build:
+  # run linters and unit tests
+  lint-and-test-units:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
+      - uses: actions/cache@v1
+        id: npm-cache
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
       - run: npm install
-      - run: npm run all
+        if: steps.npm-cache.outputs.cache-hit != 'true'
+      - run: npm run lint
+      - run: npm run test
 
   # run action on a clean machine without building to check that it works as expected
-  test:
+  test-integration:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
