@@ -6,7 +6,7 @@
   "main": "lib/main.js",
   "scripts": {
     "build": "tsc",
-    "format": "prettier --debug-check **/*.ts",
+    "format": "prettier --check {*.json,*.yml,**/*.ts,.github/**/*.yml,}",
     "lint": "eslint src/**/*.ts",
     "pack": "ncc build",
     "test": "jest",
@@ -16,11 +16,7 @@
     "type": "git",
     "url": "git+https://github.com/Gr1N/setup-poetry.git"
   },
-  "keywords": [
-    "actions",
-    "node",
-    "setup"
-  ],
+  "keywords": ["actions", "node", "setup"],
   "author": "Nikita Grishko",
   "license": "MIT",
   "dependencies": {
