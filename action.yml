@@ -2,10 +2,13 @@ name: Setup Python
 description: Set up your GitHub Actions workflow with a specific version of Poetry
 author: Nikita Grishko
 inputs:
-  test:
-    description: "input description here"
+  poetry-preview:
+    description: Allow to install prerelease versions of Poetry
     required: false
-    default: "default value if applicable"
+    default: "false"
+  poetry-version:
+    description: Poetry version to use, if version is not provided then latest stable version will be used
+    required: false
 runs:
   using: node12
   main: dist/index.js

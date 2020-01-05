@@ -11,7 +11,7 @@
     "lint:eslint": "eslint src/**/*.ts",
     "lint:prettier": "prettier --check {*.json,*.yml,**/*.ts,.github/**/*.yml}",
     "lint": "npm-run-all lint:*",
-    "test": "jest"
+    "test": "jest --coverage"
   },
   "repository": {
     "type": "git",
@@ -25,7 +25,11 @@
   "author": "Nikita Grishko",
   "license": "MIT",
   "dependencies": {
-    "@actions/core": "^1.2.0"
+    "@actions/core": "^1.2.0",
+    "@actions/exec": "^1.0.2",
+    "@actions/tool-cache": "^1.1.2",
+    "@types/semver": "^6.2.0",
+    "semver": "^6.3.0"
   },
   "devDependencies": {
     "@types/jest": "^24.0.23",

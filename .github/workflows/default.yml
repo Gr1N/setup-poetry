@@ -25,6 +25,20 @@ jobs:
   # run action on a clean machine without building to check that it works as expected
   test-integration:
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        python-version: [3.6, 3.7, 3.8]
+        poetry-version: [1.0.0]
+
+      fail-fast: true
+
     steps:
       - uses: actions/checkout@v1
+      - uses: actions/setup-python@v1
+        with:
+          python-version: ${{ matrix.python-version }}
       - uses: ./
+        with:
+          poetry-version: ${{ matrix.poetry-version }}
+      - run: poetry --version

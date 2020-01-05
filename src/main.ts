@@ -1,9 +1,12 @@
 import * as core from "@actions/core"
+import { findPoetry } from "./find"
+import { getInputs } from "./inputs"
 
 async function run(): Promise<void> {
   try {
-    const test: string = core.getInput("test")
-    core.debug(`Test input value is ${test}`)
+    const inputs = getInputs()
+
+    await findPoetry(inputs)
   } catch (error) {
     core.setFailed(error.message)
   }
