@@ -19,8 +19,9 @@
   },
   "keywords": [
     "actions",
-    "node",
-    "setup"
+    "setup",
+    "python",
+    "poetry"
   ],
   "author": "Nikita Grishko",
   "license": "MIT",
