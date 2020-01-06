@@ -1,0 +1,16 @@
+name: watch-starred
+on:
+  watch:
+    types: [started]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: appleboy/telegram-action@0.0.7
+        with:
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          format: markdown
+          message: "**${{ repo.namespace }}/${{ github.repo }}** starred!"
