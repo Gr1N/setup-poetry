@@ -53,6 +53,24 @@ steps:
   - run: poetry --version
 ```
 
+### Cache dependencies to speed up workflows
+
+```yaml
+steps:
+  - uses: actions/checkout@v1
+  - uses: actions/setup-python@v1
+    with:
+      python-version: 3.8
+  - uses: Gr1N/setup-poetry@v1
+  - uses: actions/cache@v1
+      with:
+        path: ~/.cache/pypoetry/virtualenvs
+        key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-poetry-
+  - run: poetry --version
+```
+
 ## Contributing
 
 Feel free to submit any PR you want, they are always welcome.
