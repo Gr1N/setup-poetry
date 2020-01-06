@@ -71,6 +71,25 @@ steps:
   - run: poetry --version
 ```
 
+### Configure Poetry using environment variables
+
+Poetry can be configured using environment variables and in case of CI/CD it can be a preferred way for you.
+
+A full list of available settings can be found at [official documentation](https://python-poetry.org/docs/configuration/#using-environment-variables).
+
+```yaml
+steps:
+  - uses: actions/checkout@v1
+  - uses: actions/setup-python@v1
+    with:
+      python-version: 3.8
+  - uses: Gr1N/setup-poetry@v1
+  - run: poetry --version
+    env:
+      POETRY_VIRTUALENVS_PATH: /path/to/virtualenvs/directory
+      POETRY_HTTP_BASIC_MY_REPOSITORY_PASSWORD: secret
+```
+
 ## Contributing
 
 Feel free to submit any PR you want, they are always welcome.
