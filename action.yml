@@ -1,4 +1,4 @@
-name: Setup Python
+name: Setup Poetry
 description: Set up your GitHub Actions workflow with a specific version of Poetry
 author: Nikita Grishko
 inputs:
