@@ -1,4 +1,4 @@
-name: watch-starred
+name: watch-started
 on:
   watch:
     types: [started]

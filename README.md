@@ -17,7 +17,7 @@ See [action.yml](https://github.com/Gr1N/setup-poetry/blob/master/action.yml).
 
 ```yaml
 steps:
-  - uses: actions/checkout@v1
+  - uses: actions/checkout@v2
   - uses: actions/setup-python@v1
     with:
       python-version: 3.8
@@ -29,7 +29,7 @@ steps:
 
 ```yaml
 steps:
-  - uses: actions/checkout@v1
+  - uses: actions/checkout@v2
   - uses: actions/setup-python@v1
     with:
       python-version: 3.8
@@ -43,7 +43,7 @@ steps:
 
 ```yaml
 steps:
-  - uses: actions/checkout@v1
+  - uses: actions/checkout@v2
   - uses: actions/setup-python@v1
     with:
       python-version: 3.8
@@ -57,7 +57,7 @@ steps:
 
 ```yaml
 steps:
-  - uses: actions/checkout@v1
+  - uses: actions/checkout@v2
   - uses: actions/setup-python@v1
     with:
       python-version: 3.8
@@ -79,7 +79,7 @@ A full list of available settings can be found at [official documentation](https
 
 ```yaml
 steps:
-  - uses: actions/checkout@v1
+  - uses: actions/checkout@v2
   - uses: actions/setup-python@v1
     with:
       python-version: 3.8
