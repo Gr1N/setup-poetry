@@ -21,7 +21,7 @@ steps:
   - uses: actions/setup-python@v1
     with:
       python-version: 3.8
-  - uses: Gr1N/setup-poetry@v1
+  - uses: Gr1N/setup-poetry@v2
   - run: poetry --version
 ```
 
@@ -33,7 +33,7 @@ steps:
   - uses: actions/setup-python@v1
     with:
       python-version: 3.8
-  - uses: Gr1N/setup-poetry@v1
+  - uses: Gr1N/setup-poetry@v2
     with:
       poetry-version: 1.0.0
   - run: poetry --version
@@ -47,7 +47,7 @@ steps:
   - uses: actions/setup-python@v1
     with:
       python-version: 3.8
-  - uses: Gr1N/setup-poetry@v1
+  - uses: Gr1N/setup-poetry@v2
     with:
       poetry-preview: true
   - run: poetry --version
@@ -61,7 +61,7 @@ steps:
   - uses: actions/setup-python@v1
     with:
       python-version: 3.8
-  - uses: Gr1N/setup-poetry@v1
+  - uses: Gr1N/setup-poetry@v2
   - uses: actions/cache@v1
       with:
         path: ~/.cache/pypoetry/virtualenvs
@@ -83,7 +83,7 @@ steps:
   - uses: actions/setup-python@v1
     with:
       python-version: 3.8
-  - uses: Gr1N/setup-poetry@v1
+  - uses: Gr1N/setup-poetry@v2
   - run: poetry --version
     env:
       POETRY_VIRTUALENVS_PATH: /path/to/virtualenvs/directory
