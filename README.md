@@ -63,11 +63,11 @@ steps:
       python-version: 3.8
   - uses: Gr1N/setup-poetry@v2
   - uses: actions/cache@v1
-      with:
-        path: ~/.cache/pypoetry/virtualenvs
-        key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-poetry-
+    with:
+      path: ~/.cache/pypoetry/virtualenvs
+      key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
+      restore-keys: |
+        ${{ runner.os }}-poetry-
   - run: poetry --version
 ```
 
