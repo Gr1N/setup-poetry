@@ -4314,7 +4314,7 @@ exports.findPoetry = findPoetry;
 function getPoetryArgs(inputs) {
     const args = ["--yes"];
     if (inputs.preview) {
-        args.push("--preview=true");
+        args.push("--preview");
     }
     if (inputs.version) {
         args.push(`--version=${inputs.version}`);
