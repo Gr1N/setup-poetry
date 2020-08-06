@@ -44,7 +44,7 @@ function getPoetryArgs(inputs: Inputs): string[] {
   const args: string[] = ["--yes"]
 
   if (inputs.preview) {
-    args.push("--preview=true")
+    args.push("--preview")
   }
   if (inputs.version) {
     args.push(`--version=${inputs.version}`)
