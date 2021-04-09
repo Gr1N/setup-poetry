@@ -1,5 +1,5 @@
-import * as core from "@actions/core"
-import * as semver from "semver"
+import { getInput } from "@actions/core"
+import semver from "semver"
 
 export interface Inputs {
   // Finder related inputs
@@ -14,11 +14,8 @@ export function getInputs(): Inputs {
   }
 }
 
-export function getBooleanInput(
-  name: string,
-  default_: boolean = false
-): boolean {
-  const value = core.getInput(name)
+export function getBooleanInput(name: string, default_ = false): boolean {
+  const value = getInput(name)
   if (!value) {
     return default_
   }
@@ -27,7 +24,7 @@ export function getBooleanInput(
 }
 
 export function getVersionInput(name: string): string | null {
-  const version = core.getInput(name)
+  const version = getInput(name)
   if (!version) {
     return null
   }

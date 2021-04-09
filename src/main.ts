@@ -1,4 +1,4 @@
-import * as core from "@actions/core"
+import { setFailed } from "@actions/core"
 import { findPoetry } from "./find"
 import { getInputs } from "./inputs"
 
@@ -8,7 +8,7 @@ async function run(): Promise<void> {
 
     await findPoetry(inputs)
   } catch (error) {
-    core.setFailed(error.message)
+    setFailed(error.message)
   }
 }
 
