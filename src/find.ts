@@ -6,7 +6,7 @@ import os from "os"
 import path from "path"
 
 const GET_POETRY_URL =
-  "https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py"
+  "https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py"
 
 export async function findPoetry(inputs: Inputs): Promise<void> {
   // If Poetry version is specified then we try to find a cached version and if it found
