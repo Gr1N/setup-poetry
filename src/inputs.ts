@@ -39,5 +39,5 @@ export function getVersionInput(name: string): string | null {
     )
   }
 
-  return coerced.format()
+  return version.trim()
 }
