@@ -25,7 +25,7 @@ const exec_1 = __nccwpck_require__(1514);
 const tool_cache_1 = __nccwpck_require__(7784);
 const os_1 = __importDefault(__nccwpck_require__(2087));
 const path_1 = __importDefault(__nccwpck_require__(5622));
-const GET_POETRY_URL = "https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py";
+const GET_POETRY_URL = "https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py";
 function findPoetry(inputs) {
     return __awaiter(this, void 0, void 0, function* () {
         // If Poetry version is specified then we try to find a cached version and if it found
@@ -43,7 +43,7 @@ function findPoetry(inputs) {
         yield exec_1.exec("python", [getPoetryPath, ...getPoetryArgs(inputs)]);
         // If Poetry installed with specified version then add it to the cache and to the jobs
         // PATH, otherwise, just add it to the jobs PATH
-        const poetryPath = path_1.default.join(os_1.default.homedir(), ".poetry");
+        const poetryPath = path_1.default.join(os_1.default.homedir(), ".local", "share", "pypoetry");
         if (inputs.version) {
             const poetryCachedPath = yield tool_cache_1.cacheDir(poetryPath, "poetry", inputs.version);
             core_1.addPath(getPoetryBin(poetryCachedPath));
@@ -111,7 +111,7 @@ function getVersionInput(name) {
         throw new Error(`Passed Poetry version '${coerced}' is not supported.
        Please use any other supported version >=1.0`);
     }
-    return coerced.format();
+    return version.trim();
 }
 exports.getVersionInput = getVersionInput;
 

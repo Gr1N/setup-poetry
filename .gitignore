@@ -100,3 +100,6 @@ lib/**/*
 
 # ASDF files
 .tool-versions
+
+# Other
+.vscode/

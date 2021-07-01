@@ -5,10 +5,11 @@ const TEST_ENV_VARS = {
   INPUT_FALSY: "false",
   INPUT_TRUTHY: "true",
   INPUT_VERSION_UNSUPPORTED: "0.12.0",
-  INPUT_VERSION_SUPPORTED: "1.0",
+  INPUT_VERSION_SUPPORTED: "1.0.0",
+  INPUT_VERSION_ALPHA: "1.2.0a1",
 
   "INPUT_POETRY-PREVIEW": "true",
-  "INPUT_POETRY-VERSION": "1.2"
+  "INPUT_POETRY-VERSION": "1.2.0"
 }
 
 describe("options", () => {
@@ -58,5 +59,9 @@ describe("options", () => {
 
   it("getVersionInput returns version if input is supported", () => {
     expect(getVersionInput("version_supported")).toBe("1.0.0")
+  })
+
+  it("getVersionInput returns version if input is alpha", () => {
+    expect(getVersionInput("version_alpha")).toBe("1.2.0a1")
   })
 })
