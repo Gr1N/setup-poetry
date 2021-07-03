@@ -9,6 +9,13 @@ This action supports versions of:
 - Python `>=3.6`;
 - Poetry `>=1.0`.
 
+## Changelog
+
+### v5
+
+- **Breaking Change**, support new Poetry installation script. According to the official documentation it's primarily designed to work with Poetry 1.2 and higher. It also works with earlier versions of Poetry but some features may be unsupported like `self update` #16
+- **Breaking Change**, remove passed version coercion, for example, version `1.0` from `v5` will not be coerced to `1.0.0`. So, from `v5` it's required to specify a full and valid version of Poetry desired to be installed #16
+
 ## Usage
 
 See [action.yml](https://github.com/Gr1N/setup-poetry/blob/master/action.yml).
@@ -21,7 +28,7 @@ steps:
   - uses: actions/setup-python@v1
     with:
       python-version: 3.8
-  - uses: Gr1N/setup-poetry@v4
+  - uses: Gr1N/setup-poetry@v5
   - run: poetry --version
 ```
 
@@ -33,7 +40,7 @@ steps:
   - uses: actions/setup-python@v1
     with:
       python-version: 3.8
-  - uses: Gr1N/setup-poetry@v4
+  - uses: Gr1N/setup-poetry@v5
     with:
       poetry-version: 1.0.0
   - run: poetry --version
@@ -47,7 +54,7 @@ steps:
   - uses: actions/setup-python@v1
     with:
       python-version: 3.8
-  - uses: Gr1N/setup-poetry@v4
+  - uses: Gr1N/setup-poetry@v5
     with:
       poetry-preview: true
   - run: poetry --version
@@ -61,7 +68,7 @@ steps:
   - uses: actions/setup-python@v1
     with:
       python-version: 3.8
-  - uses: Gr1N/setup-poetry@v4
+  - uses: Gr1N/setup-poetry@v5
   - uses: actions/cache@v2
     with:
       path: ~/.cache/pypoetry/virtualenvs
@@ -81,7 +88,7 @@ steps:
   - uses: actions/setup-python@v1
     with:
       python-version: 3.8
-  - uses: Gr1N/setup-poetry@v4
+  - uses: Gr1N/setup-poetry@v5
   - run: poetry --version
     env:
       POETRY_VIRTUALENVS_PATH: /path/to/virtualenvs/directory
