@@ -28,33 +28,17 @@ const path_1 = __importDefault(__nccwpck_require__(5622));
 const GET_POETRY_URL = "https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py";
 function findPoetry(inputs) {
     return __awaiter(this, void 0, void 0, function* () {
-        // If Poetry version is specified then we try to find a cached version and if it found
-        // then we add it to the jobs PATH (should work only in case of private runners)
-        if (inputs.version) {
-            const poetryFoundPath = tool_cache_1.find("poetry", inputs.version);
-            if (poetryFoundPath) {
-                core_1.addPath(getPoetryBin(poetryFoundPath));
-                return;
-            }
-        }
         // Download get-poetry.py
         const getPoetryPath = yield tool_cache_1.downloadTool(GET_POETRY_URL);
         // Run Poetry installation script
-        yield exec_1.exec("python", [getPoetryPath, ...getPoetryArgs(inputs)]);
-        // If Poetry installed with specified version then add it to the cache and to the jobs
-        // PATH, otherwise, just add it to the jobs PATH
-        const poetryPath = path_1.default.join(os_1.default.homedir(), ".local", "share", "pypoetry");
-        if (inputs.version) {
-            const poetryCachedPath = yield tool_cache_1.cacheDir(poetryPath, "poetry", inputs.version);
-            core_1.addPath(getPoetryBin(poetryCachedPath));
-        }
-        else {
-            core_1.addPath(getPoetryBin(poetryPath));
-        }
+        yield exec_1.exec("python", [getPoetryPath, ...getPoetryInstallArgs(inputs)]);
+        // Add Poetry executable to the PATH
+        const poetryPath = path_1.default.join(os_1.default.homedir(), ...getPoetryPathArgs());
+        core_1.addPath(poetryPath);
     });
 }
 exports.findPoetry = findPoetry;
-function getPoetryArgs(inputs) {
+function getPoetryInstallArgs(inputs) {
     const args = ["--yes"];
     if (inputs.preview) {
         args.push("--preview");
@@ -64,8 +48,13 @@ function getPoetryArgs(inputs) {
     }
     return args;
 }
-function getPoetryBin(poetryPath) {
-    return path_1.default.join(poetryPath, "bin");
+function getPoetryPathArgs() {
+    if (os_1.default.platform() === "win32") {
+        return ["AppData", "Roaming", "Python", "Scripts"];
+    }
+    else {
+        return [".local", "share", "pypoetry", "bin"];
+    }
 }
 
 
