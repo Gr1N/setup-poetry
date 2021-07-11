@@ -11,6 +11,10 @@ This action supports versions of:
 
 ## Changelog
 
+### v6
+
+- Support Windows platform #19
+
 ### v5
 
 - **Breaking Change**, support new Poetry installation script. According to the official documentation it's primarily designed to work with Poetry 1.2 and higher. It also works with earlier versions of Poetry but some features may be unsupported like `self update` #16
