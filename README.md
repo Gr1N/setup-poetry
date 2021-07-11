@@ -22,8 +22,6 @@ This action supports versions of:
 
 ## Usage
 
-See [action.yml](https://github.com/Gr1N/setup-poetry/blob/master/action.yml).
-
 ### Install latest available version of Poetry
 
 ```yaml
@@ -32,7 +30,7 @@ steps:
   - uses: actions/setup-python@v1
     with:
       python-version: 3.8
-  - uses: Gr1N/setup-poetry@v5
+  - uses: Gr1N/setup-poetry@v6
   - run: poetry --version
 ```
 
@@ -44,9 +42,9 @@ steps:
   - uses: actions/setup-python@v1
     with:
       python-version: 3.8
-  - uses: Gr1N/setup-poetry@v5
+  - uses: Gr1N/setup-poetry@v6
     with:
-      poetry-version: 1.0.0
+      poetry-version: 1.1.7
   - run: poetry --version
 ```
 
@@ -58,7 +56,7 @@ steps:
   - uses: actions/setup-python@v1
     with:
       python-version: 3.8
-  - uses: Gr1N/setup-poetry@v5
+  - uses: Gr1N/setup-poetry@v6
     with:
       poetry-preview: true
   - run: poetry --version
@@ -72,7 +70,7 @@ steps:
   - uses: actions/setup-python@v1
     with:
       python-version: 3.8
-  - uses: Gr1N/setup-poetry@v5
+  - uses: Gr1N/setup-poetry@v6
   - uses: actions/cache@v2
     with:
       path: ~/.cache/pypoetry/virtualenvs
@@ -92,7 +90,7 @@ steps:
   - uses: actions/setup-python@v1
     with:
       python-version: 3.8
-  - uses: Gr1N/setup-poetry@v5
+  - uses: Gr1N/setup-poetry@v6
   - run: poetry --version
     env:
       POETRY_VIRTUALENVS_PATH: /path/to/virtualenvs/directory
