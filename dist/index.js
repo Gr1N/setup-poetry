@@ -49,11 +49,11 @@ function getPoetryInstallArgs(inputs) {
     return args;
 }
 function getPoetryPathArgs() {
-    if (os_1.default.platform() === "win32") {
-        return ["AppData", "Roaming", "Python", "Scripts"];
-    }
-    else {
-        return [".local", "share", "pypoetry", "bin"];
+    switch (os_1.default.platform()) {
+        case "win32":
+            return ["AppData", "Roaming", "Python", "Scripts"];
+        default:
+            return [".local", "bin"];
     }
 }
 
