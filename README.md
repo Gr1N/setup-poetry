@@ -11,6 +11,10 @@ This action supports versions of:
 
 ## Changelog
 
+### v7
+
+- **Fix**, support MacOS platform #21
+
 ### v6
 
 - Support Windows platform #19
