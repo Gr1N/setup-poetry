@@ -6,10 +6,16 @@ This action sets up a [Poetry](https://python-poetry.org) for use in actions by 
 
 This action supports versions of:
 
-- Python `>=3.6`;
-- Poetry `>=1.0`.
+- Python `>=3.7`
+- Poetry `>=1.0`
 
 ## Changelog
+
+### v8
+
+- Action updated to use Node 16
+- Support for Python 3.10 and 3.11
+- **Breaking Change**, removed support for Python 3.6
 
 ### v7
 
@@ -30,11 +36,11 @@ This action supports versions of:
 
 ```yaml
 steps:
-  - uses: actions/checkout@v2
-  - uses: actions/setup-python@v1
+  - uses: actions/checkout@v3
+  - uses: actions/setup-python@v4
     with:
-      python-version: 3.8
-  - uses: Gr1N/setup-poetry@v7
+      python-version: "3.11"
+  - uses: Gr1N/setup-poetry@v8
   - run: poetry --version
 ```
 
@@ -42,13 +48,13 @@ steps:
 
 ```yaml
 steps:
-  - uses: actions/checkout@v2
-  - uses: actions/setup-python@v1
+  - uses: actions/checkout@v3
+  - uses: actions/setup-python@v4
     with:
-      python-version: 3.8
-  - uses: Gr1N/setup-poetry@v7
+      python-version: "3.11"
+  - uses: Gr1N/setup-poetry@v8
     with:
-      poetry-version: 1.1.7
+      poetry-version: "1.2.2"
   - run: poetry --version
 ```
 
@@ -56,11 +62,11 @@ steps:
 
 ```yaml
 steps:
-  - uses: actions/checkout@v2
-  - uses: actions/setup-python@v1
+  - uses: actions/checkout@v3
+  - uses: actions/setup-python@v4
     with:
-      python-version: 3.8
-  - uses: Gr1N/setup-poetry@v7
+      python-version: "3.11"
+  - uses: Gr1N/setup-poetry@v8
     with:
       poetry-preview: true
   - run: poetry --version
@@ -70,11 +76,11 @@ steps:
 
 ```yaml
 steps:
-  - uses: actions/checkout@v2
-  - uses: actions/setup-python@v1
+  - uses: actions/checkout@v3
+  - uses: actions/setup-python@v4
     with:
-      python-version: 3.8
-  - uses: Gr1N/setup-poetry@v7
+      python-version: "3.11"
+  - uses: Gr1N/setup-poetry@v8
   - uses: actions/cache@v2
     with:
       path: ~/.cache/pypoetry/virtualenvs
@@ -90,11 +96,11 @@ A full list of available settings can be found at [official documentation](https
 
 ```yaml
 steps:
-  - uses: actions/checkout@v2
-  - uses: actions/setup-python@v1
+  - uses: actions/checkout@v3
+  - uses: actions/setup-python@v4
     with:
-      python-version: 3.8
-  - uses: Gr1N/setup-poetry@v7
+      python-version: "3.11"
+  - uses: Gr1N/setup-poetry@v8
   - run: poetry --version
     env:
       POETRY_VIRTUALENVS_PATH: /path/to/virtualenvs/directory
