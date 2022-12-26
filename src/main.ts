@@ -8,8 +8,13 @@ async function run(): Promise<void> {
 
     await findPoetry(inputs)
   } catch (error) {
-    setFailed(error.message)
+    setFailed(errorAsMessage(error))
   }
+}
+
+function errorAsMessage(error: unknown) {
+  if (error instanceof Error) return error.message
+  return String(error)
 }
 
 run()

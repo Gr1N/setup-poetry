@@ -5,8 +5,7 @@ import { Inputs } from "./inputs"
 import os from "os"
 import path from "path"
 
-const GET_POETRY_URL =
-  "https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py"
+const GET_POETRY_URL = "https://install.python-poetry.org"
 
 export async function findPoetry(inputs: Inputs): Promise<void> {
   // Download get-poetry.py
