@@ -6,10 +6,16 @@ This action sets up a [Poetry](https://python-poetry.org) for use in actions by 
 
 This action supports versions of:
 
-- Python `>=3.7`
+- Python `>=3.8`
 - Poetry `>=1.0`
 
 ## Changelog
+
+### v9
+
+- Action updated to use Node 20
+- Support for Python 3.12
+- **Breaking Change**, removed support for Python 3.7
 
 ### v8
 
