@@ -29,13 +29,13 @@ jobs:
     strategy:
       matrix:
         python-version:
-          - "3.7"
           - "3.8"
           - "3.9"
           - "3.10"
           - "3.11"
+          - "3.12"
         poetry-version:
-          - "1.2.2"
+          - "1.7.1"
         os:
           - macos-latest
           - ubuntu-latest
