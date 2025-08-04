@@ -42,7 +42,7 @@ This action supports versions of:
 
 ```yaml
 steps:
-  - uses: actions/checkout@v3
+  - uses: actions/checkout@v4
   - uses: actions/setup-python@v4
     with:
       python-version: "3.11"
@@ -54,7 +54,7 @@ steps:
 
 ```yaml
 steps:
-  - uses: actions/checkout@v3
+  - uses: actions/checkout@v4
   - uses: actions/setup-python@v4
     with:
       python-version: "3.11"
@@ -68,7 +68,7 @@ steps:
 
 ```yaml
 steps:
-  - uses: actions/checkout@v3
+  - uses: actions/checkout@v4
   - uses: actions/setup-python@v4
     with:
       python-version: "3.11"
@@ -82,12 +82,12 @@ steps:
 
 ```yaml
 steps:
-  - uses: actions/checkout@v3
+  - uses: actions/checkout@v4
   - uses: actions/setup-python@v4
     with:
       python-version: "3.11"
   - uses: Gr1N/setup-poetry@v8
-  - uses: actions/cache@v2
+  - uses: actions/cache@v4
     with:
       path: ~/.cache/pypoetry/virtualenvs
       key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
@@ -102,7 +102,7 @@ A full list of available settings can be found at [official documentation](https
 
 ```yaml
 steps:
-  - uses: actions/checkout@v3
+  - uses: actions/checkout@v4
   - uses: actions/setup-python@v4
     with:
       python-version: "3.11"
