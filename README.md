@@ -6,10 +6,17 @@ This action sets up a [Poetry](https://python-poetry.org) for use in actions by 
 
 This action supports versions of:
 
-- Python `>=3.8`
+- Python `>=3.10`
 - Poetry `>=1.0`
 
 ## Changelog
+
+### v10
+
+- Action updated to use Node 24. Self-hosted runners must be v2.327.1 or newer, and Node 24 does not run on macOS 13.4 and lower
+- Support for Python 3.13, 3.14 and 3.15
+- Print the Poetry installer error log when installation fails #51
+- **Breaking Change**, removed support for Python 3.8 and 3.9, Poetry 2.x requires Python 3.10 or newer #49
 
 ### v9
 
@@ -42,11 +49,11 @@ This action supports versions of:
 
 ```yaml
 steps:
-  - uses: actions/checkout@v3
-  - uses: actions/setup-python@v4
+  - uses: actions/checkout@v7
+  - uses: actions/setup-python@v7
     with:
-      python-version: "3.11"
-  - uses: Gr1N/setup-poetry@v8
+      python-version: "3.14"
+  - uses: Gr1N/setup-poetry@v10
   - run: poetry --version
 ```
 
@@ -54,13 +61,13 @@ steps:
 
 ```yaml
 steps:
-  - uses: actions/checkout@v3
-  - uses: actions/setup-python@v4
+  - uses: actions/checkout@v7
+  - uses: actions/setup-python@v7
     with:
-      python-version: "3.11"
-  - uses: Gr1N/setup-poetry@v8
+      python-version: "3.14"
+  - uses: Gr1N/setup-poetry@v10
     with:
-      poetry-version: "1.2.2"
+      poetry-version: "2.5.1"
   - run: poetry --version
 ```
 
@@ -68,11 +75,11 @@ steps:
 
 ```yaml
 steps:
-  - uses: actions/checkout@v3
-  - uses: actions/setup-python@v4
+  - uses: actions/checkout@v7
+  - uses: actions/setup-python@v7
     with:
-      python-version: "3.11"
-  - uses: Gr1N/setup-poetry@v8
+      python-version: "3.14"
+  - uses: Gr1N/setup-poetry@v10
     with:
       poetry-preview: true
   - run: poetry --version
@@ -82,12 +89,12 @@ steps:
 
 ```yaml
 steps:
-  - uses: actions/checkout@v3
-  - uses: actions/setup-python@v4
+  - uses: actions/checkout@v7
+  - uses: actions/setup-python@v7
     with:
-      python-version: "3.11"
-  - uses: Gr1N/setup-poetry@v8
-  - uses: actions/cache@v2
+      python-version: "3.14"
+  - uses: Gr1N/setup-poetry@v10
+  - uses: actions/cache@v6
     with:
       path: ~/.cache/pypoetry/virtualenvs
       key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
@@ -102,11 +109,11 @@ A full list of available settings can be found at [official documentation](https
 
 ```yaml
 steps:
-  - uses: actions/checkout@v3
-  - uses: actions/setup-python@v4
+  - uses: actions/checkout@v7
+  - uses: actions/setup-python@v7
     with:
-      python-version: "3.11"
-  - uses: Gr1N/setup-poetry@v8
+      python-version: "3.14"
+  - uses: Gr1N/setup-poetry@v10
   - run: poetry --version
     env:
       POETRY_VIRTUALENVS_PATH: /path/to/virtualenvs/directory

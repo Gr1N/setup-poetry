@@ -10,17 +10,34 @@ jobs:
   lint-and-test-units:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/cache@v3
-        id: npm-cache
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-      - run: npm install
+          node-version-file: .node-version
+          cache: npm
+      - run: npm ci
       - run: npm run lint
       - run: npm run test
+
+  # rebuild the action to check that committed dist/ matches the sources
+  check-dist:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .node-version
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - name: Check dist/ is up to date
+        run: |
+          if [ -n "$(git status --porcelain -- dist/)" ]; then
+            echo "::error::dist/ is outdated, run 'npm run build' and commit the result"
+            git status -- dist/
+            git diff --stat -- dist/
+            exit 1
+          fi
 
   # run action on a clean machine without building to check that it works as expected
   test-integration:
@@ -29,13 +46,14 @@ jobs:
     strategy:
       matrix:
         python-version:
-          - "3.8"
-          - "3.9"
           - "3.10"
           - "3.11"
           - "3.12"
+          - "3.13"
+          - "3.14"
+          - "3.15"
         poetry-version:
-          - "1.7.1"
+          - "2.5.1"
         os:
           - macos-latest
           - ubuntu-latest
@@ -43,8 +61,8 @@ jobs:
       fail-fast: true
 
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: ${{ matrix.python-version }}
       - uses: ./
