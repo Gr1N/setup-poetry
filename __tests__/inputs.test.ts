@@ -21,7 +21,7 @@ describe("options", () => {
 
   afterEach(() => {
     for (const key in TEST_ENV_VARS) {
-      Reflect.deleteProperty(TEST_ENV_VARS, key)
+      Reflect.deleteProperty(process.env, key)
     }
   })
 

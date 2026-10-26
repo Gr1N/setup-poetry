@@ -3,16 +3,17 @@
   "version": "0.0.0",
   "private": true,
   "description": "Set up your GitHub Actions workflow with a specific version of Poetry",
-  "main": "lib/main.js",
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
   "scripts": {
-    "build:compile": "tsc",
-    "build:dist": "ncc build",
-    "build": "npm-run-all build:*",
-    "lint:eslint": "eslint src/**/*.ts",
-    "lint:prettier": "prettier --check {*.json,*.yml,**/*.ts,.github/**/*.yml}",
+    "build": "ncc build src/main.ts",
+    "lint:eslint": "eslint",
+    "lint:prettier": "prettier --check {*.js,*.json,*.yml,**/*.ts,.github/**/*.yml}",
+    "lint:tsc": "tsc --noEmit",
     "lint": "npm-run-all lint:*",
-    "test": "jest --coverage",
-    "ts-node": "ts-node",
+    "test": "NODE_OPTIONS=--experimental-vm-modules NODE_NO_WARNINGS=1 jest --coverage",
     "upgrade": "ncu --upgrade"
   },
   "repository": {
@@ -28,64 +29,28 @@
   "author": "Nikita Grishko",
   "license": "MIT",
   "dependencies": {
-    "@actions/core": "^1.10.1",
-    "@actions/exec": "^1.1.1",
-    "@actions/tool-cache": "^2.0.1",
-    "@types/semver": "^7.5.7",
-    "semver": "^7.6.0"
+    "@actions/core": "^3.0.1",
+    "@actions/exec": "^3.0.0",
+    "@actions/tool-cache": "^4.0.0",
+    "semver": "^7.8.5"
   },
   "devDependencies": {
-    "@types/jest": "^29.5.12",
-    "@types/node": "^20.11.19",
-    "@typescript-eslint/eslint-plugin": "^7.0.1",
-    "@typescript-eslint/parser": "^7.0.1",
-    "@vercel/ncc": "^0.38.1",
-    "eslint": "^8.56.0",
-    "eslint-plugin-github": "^4.10.1",
-    "eslint-plugin-jest": "^27.9.0",
-    "jest": "^29.7.0",
-    "jest-circus": "^29.7.0",
-    "js-yaml": "^4.1.0",
-    "npm-check-updates": "^16.14.15",
-    "npm-run-all": "^4.1.5",
-    "prettier": "^3.2.5",
-    "ts-jest": "^29.1.2",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.3.3"
-  },
-  "eslintIgnore": [
-    "lib/",
-    "dist/",
-    "node_modules/"
-  ],
-  "eslintConfig": {
-    "plugins": [
-      "jest",
-      "@typescript-eslint",
-      "github"
-    ],
-    "extends": [
-      "eslint:recommended",
-      "plugin:@typescript-eslint/recommended",
-      "plugin:@typescript-eslint/recommended-requiring-type-checking",
-      "plugin:github/recommended"
-    ],
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-      "ecmaVersion": 9,
-      "sourceType": "module",
-      "project": "./tsconfig.json"
-    },
-    "rules": {
-      "@typescript-eslint/no-floating-promises": "off",
-      "@typescript-eslint/no-unsafe-member-access": "off",
-      "@typescript-eslint/restrict-template-expressions": "off"
-    },
-    "env": {
-      "node": true,
-      "es6": true,
-      "jest/globals": true
-    }
+    "@eslint/js": "^10.0.1",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^24.19.2",
+    "@types/semver": "^7.8.0",
+    "@vercel/ncc": "^0.45.0",
+    "eslint": "^10.13.0",
+    "eslint-plugin-github": "^6.1.2",
+    "eslint-plugin-jest": "^29.17.0",
+    "globals": "^17.13.0",
+    "jest": "^30.5.2",
+    "npm-check-updates": "^23.1.1",
+    "npm-run-all2": "^9.0.4",
+    "prettier": "^3.9.10",
+    "ts-jest": "^29.4.15",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.72.1"
   },
   "prettier": {
     "printWidth": 80,
@@ -103,6 +68,7 @@
       },
       {
         "files": [
+          "*.js",
           "**/*.ts"
         ],
         "options": {
@@ -126,6 +92,9 @@
   },
   "jest": {
     "clearMocks": true,
+    "extensionsToTreatAsEsm": [
+      ".ts"
+    ],
     "moduleFileExtensions": [
       "js",
       "ts"
@@ -134,9 +103,13 @@
     "testMatch": [
       "**/*.test.ts"
     ],
-    "testRunner": "jest-circus/runner",
     "transform": {
-      "^.+\\.ts$": "ts-jest"
+      "^.+\\.ts$": [
+        "ts-jest",
+        {
+          "useESM": true
+        }
+      ]
     },
     "verbose": true
   }
